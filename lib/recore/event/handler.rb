@@ -14,7 +14,8 @@ module REcore
           event = Ecore::EcoreEventSignalExit.new(ev)
 	  event_type = [:interrupt, :quit, :terminate].find {|sym| event[sym] }
 
-	  @block.call(event_type)
+	  @callback.call(event_type)
+	  1
 	end
       end
 
