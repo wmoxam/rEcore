@@ -42,6 +42,7 @@ module REcore
   end
 end
 
+require_relative 'recore/callbacks'
 require_relative 'recore/event'
 require_relative 'recore/job'
 require_relative 'recore/throttle'
