@@ -43,6 +43,8 @@ module REcore
 end
 
 require_relative 'recore/event'
+require_relative 'recore/job'
+require_relative 'recore/throttle'
 require_relative 'recore/time'
 require_relative 'recore/timer'
 require_relative 'recore/version'
