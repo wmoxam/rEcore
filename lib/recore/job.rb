@@ -3,7 +3,7 @@ module REcore
     def initialize(data = nil, &block)
       serialized_data = data.nil? ? nil : Marshal.dump(data)
       @data_pointer = data.nil? ? nil : FFI::MemoryPointer.from_string(serialized_data)
-      @callback = block
+      @callback_block = block
       @job = Ecore::ecore_job_add(callback, @data_pointer)
     end
 
@@ -16,11 +16,7 @@ module REcore
       @cb ||= Proc.new do |data|
         begin
 	  ruby_data = load_data(data)
-	  if ruby_data
-	    @callback.call ruby_data
-	  else
-	    @callback.call
-	  end
+	  @callback_block.call ruby_data
         rescue Exception => e
 	  raise e.message + self.inspect
 	end
