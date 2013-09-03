@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "REcore" do
+describe "REcore::Job" do
   it "should add jobs" do
     $stdout.should_receive(:puts).with("foo")
     $stdout.should_not_receive(:puts).with("bar")

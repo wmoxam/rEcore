@@ -3,6 +3,7 @@ require 'gem_box'
 GemBox.load { 'ecore-ffi' }
 
 require_relative 'recore/util'
+require_relative 'recore/callbacks'
 
 require 'pry-nav'
 
@@ -42,7 +43,7 @@ module REcore
   end
 end
 
-require_relative 'recore/callbacks'
+require_relative 'recore/animator'
 require_relative 'recore/event'
 require_relative 'recore/job'
 require_relative 'recore/throttle'
