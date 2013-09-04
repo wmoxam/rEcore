@@ -21,19 +21,13 @@ module REcore
       Ecore::ecore_main_loop_quit
     end
 
-    def set_app_args(args)
-      return if args.nil? || args.empty?
-      pointers = Util::string_pointers_from_array(args)
-      Ecore::ecore_app_args_set(args, pointers)
-    end
-
     def shutdown
       Ecore::ecore_shutdown
     end
 
     def start(args = [])
       init
-      set_app_args(args)
+      REcore::App.args = args
 
       yield
 
@@ -44,6 +38,7 @@ module REcore
 end
 
 require_relative 'recore/animator'
+require_relative 'recore/app'
 require_relative 'recore/event'
 require_relative 'recore/job'
 require_relative 'recore/throttle'
